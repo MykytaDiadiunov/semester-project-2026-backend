@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "django_filters",
     "corsheaders",
     "drf_spectacular",
+    "cart.apps.CartConfig",
+    "product.apps.ProductConfig",
 ]
 
 MIDDLEWARE = [
