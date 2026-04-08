@@ -1,0 +1,8 @@
+.vscode/*
+!.vscode/extensions.json
+media
+.env
+.ruff_cache
+*.pyc
+__pycache__
+staticfiles

@@ -1,0 +1,11 @@
+[tool.ruff]
+
+target-version = "py312"
+
+exclude = ["migrations"]
+
+select = ["E", "W", "F", "A", "PLC", "PLE", "PLW", "I", "DJ", "N"]
+ignore = ["F811", "DJ001", "PLC0206", "DJ012"]
+fix = true
+
+line-length = 120
