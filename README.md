@@ -20,8 +20,8 @@ DJANGO_SUPERUSER_EMAIL=root@root.com
 ## Installing
   ### **1. Clone the Repository**
 ```
-git clone git@github.com:MykytaDiadiunov/django-rest-framework-boilerplate.git
-cd django-rest-framework-boilerplate
+git clone git@github.com:MykytaDiadiunov/semester-project-2026-backend.git
+cd semester-project-2026-backend
 ```
   ### **2. Launch with Docker**
 ```
