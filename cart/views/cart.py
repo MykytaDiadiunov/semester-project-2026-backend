@@ -16,7 +16,7 @@ class CartViewSet(GenericViewSet):
     serializer_class = ReadCartSerializer
     permission_classes = [IsAuthenticated]
 
-    @action(methods=[HTTPMethod.POST.value], detail=False)
+    @action(methods=[HTTPMethod.POST.value], detail=False, url_path="add-item")
     def add_item(self, request):
         request_serializer = AddItemSerializer(data=request.data)
         request_serializer.is_valid(raise_exception=True)
