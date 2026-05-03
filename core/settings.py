@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework.authtoken",
+    "cloudinary_storage",
+    "cloudinary",
     "rest_framework",
     "django_filters",
     "corsheaders",
@@ -103,6 +105,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUD_NAME"),
+    "API_KEY": env("CLOUD_API_KEY"),
+    "API_SECRET": env("CLOUD_API_SECRET"),
+}
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
