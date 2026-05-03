@@ -16,6 +16,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name="products")
+    content_file = models.FileField(upload_to="products/", blank=True, null=True)
 
     class Meta:
         db_table = "item"
