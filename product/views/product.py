@@ -16,7 +16,7 @@ class ProductViewSet(ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = BasePagination
 
-    @action(detail=False, methods=[HTTPMethod.GET.value]])
+    @action(detail=False, methods=[HTTPMethod.GET.value])
     def filters(self, request):
         categories = ProductCategory.objects.all()
         price_stats = Product.objects.aggregate(min_price=Min("price"), max_price=Max("price"))
