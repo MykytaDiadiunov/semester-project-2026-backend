@@ -1,3 +1,5 @@
+from http import HTTPMethod
+
 from django.db.models import Max, Min
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -14,7 +16,7 @@ class ProductViewSet(ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = BasePagination
 
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=[HTTPMethod.GET.value]])
     def filters(self, request):
         categories = ProductCategory.objects.all()
         price_stats = Product.objects.aggregate(min_price=Min("price"), max_price=Max("price"))
