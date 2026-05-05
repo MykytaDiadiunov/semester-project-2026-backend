@@ -7,6 +7,7 @@ from rest_framework.views import status
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from core.pagination import BasePagination
+from product.filters import ProductFilter
 from product.models.product import Product, ProductCategory
 from product.serializers.product import ProductCategorySerializer, ProductSerializer
 
@@ -15,6 +16,7 @@ class ProductViewSet(ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pagination_class = BasePagination
+    filterset_class = ProductFilter
 
     @action(detail=False, methods=[HTTPMethod.GET.value])
     def filters(self, request):
