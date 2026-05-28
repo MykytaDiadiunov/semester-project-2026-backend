@@ -16,7 +16,17 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = [
+    "https://semester-project-2026-backend.onrender.com",
+    "https://semester-project-2026-frontend.onrender.com",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://semester-project-2026-frontend.onrender.com",
+    "https://semester-project-2026-backend.onrender.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
