@@ -26,6 +26,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
+# settings.py
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://semester-project-2026-backend.onrender.com",
+]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
