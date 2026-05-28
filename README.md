@@ -1,6 +1,7 @@
 # Simple Django REST Framework boilerplate
 
 ## Env example
+
 ```
 DEBUG=True
 SECRET_KEY=!SECRET
@@ -15,15 +16,23 @@ POSTGRES_PORT=5432
 DJANGO_SUPERUSER_USERNAME=root
 DJANGO_SUPERUSER_PASSWORD=root
 DJANGO_SUPERUSER_EMAIL=root@root.com
+
+CLOUD_NAME=<TEST>
+CLOUD_API_KEY=<TEST>
+CLOUD_API_SECRET=<TEST>
 ```
 
 ## Installing
-  ### **1. Clone the Repository**
+
+### **1. Clone the Repository**
+
 ```
 git clone git@github.com:MykytaDiadiunov/semester-project-2026-backend.git
 cd semester-project-2026-backend
 ```
-  ### **2. Launch with Docker**
+
+### **2. Launch with Docker**
+
 ```
 docker compose up --build
 ```

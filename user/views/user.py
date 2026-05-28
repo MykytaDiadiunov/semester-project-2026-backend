@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework.views import status
 from rest_framework.viewsets import ModelViewSet
 
+from cart.models.cart import Cart, CartStatusChoice
+from cart.serializers.cart import ReadCartSerializer
 from user.serializers.user import CompactUserSerializer, UserSerializer
 
 
@@ -31,3 +33,13 @@ class UserViewSet(ModelViewSet):
     @action(methods=[HTTPMethod.GET.value], detail=False)
     def current(self, request, *args, **kwargs):
         return Response(UserSerializer(request.user).data)
+
+    @action(methods=[HTTPMethod.GET.value], detail=False)
+    def cart(self, request, *args, **kwargs):
+        user = request.user
+        cart, _ = Cart.objects.get_or_create(
+            user=user,
+            status=CartStatusChoice.ACTIVE,
+        )
+
+        return Response(ReadCartSerializer(cart).data, status=status.HTTP_200_OK)
