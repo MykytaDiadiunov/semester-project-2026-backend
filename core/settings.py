@@ -5,6 +5,7 @@ import environ
 
 env = environ.Env(
     DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ["*"]),
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,22 +16,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = [
-    "semester-project-2026-backend.onrender.com",
-    "semester-project-2026-frontend.onrender.com",
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://semester-project-2026-frontend.onrender.com",
-    "https://semester-project-2026-backend.onrender.com",
-]
-
-
-# settings.py
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://semester-project-2026-backend.onrender.com",
-]
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
