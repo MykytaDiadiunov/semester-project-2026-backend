@@ -37,7 +37,7 @@ class UserViewSet(ModelViewSet):
     @action(methods=[HTTPMethod.GET.value], detail=False)
     def cart(self, request, *args, **kwargs):
         user = request.user
-        cart, _ = Cart.objects.get_or_create(
+        cart, _ = Cart.objects.prefetch_related("items").get_or_create(
             user=user,
             status=CartStatusChoice.ACTIVE,
         )

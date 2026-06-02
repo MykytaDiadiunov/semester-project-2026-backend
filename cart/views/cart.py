@@ -7,15 +7,26 @@ from rest_framework.views import status
 from rest_framework.viewsets import GenericViewSet
 
 from cart.execeptions.cart import CartNoItemsError
-from cart.models.cart import Cart
+from cart.models.cart import Cart, CartStatusChoice
 from cart.serializers.cart import AddItemSerializer, ReadCartSerializer
 from cart.services.cart import CartService
+from core.pagination import BasePagination
 
 
 class CartViewSet(GenericViewSet):
-    queryset = Cart.objects.all()
+    queryset = Cart.objects.prefetch_related("items").all()
     serializer_class = ReadCartSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = BasePagination
+
+    @action(methods=[HTTPMethod.GET.value], detail=False, url_path="history")
+    def finished_carts_history(self, request):
+        carts_qs = self.queryset.filter(user=request.user, status=CartStatusChoice.FINISHED)
+        page = self.paginate_queryset(carts_qs)
+        print(page)
+        if page is not None:
+            return self.get_paginated_response(self.get_serializer(page, many=True).data)
+        return Response(self.get_serializer(carts_qs, many=True).data, status=status.HTTP_200_OK)
 
     @action(methods=[HTTPMethod.POST.value], detail=False, url_path="manage-item")
     def manage_item(self, request):
